@@ -3,6 +3,7 @@ const app = express()
 const handlebars = require("express-handlebars").engine
 const bodyParser = require("body-parser")
 const post = require("./models/post")
+const { format } = require('date-fns');
 
 app.engine("handlebars", handlebars({defaultLayout: "main"}))
 app.set("view engine", "handlebars")
@@ -22,6 +23,8 @@ app.get("/consulta", function(req, res){
     })
 })
 
+
+
 app.get("/editar/:id", function(req, res){
     post.findAll({where: {'id': req.params.id}}).then(function(post){
         res.render("editar", {post})
@@ -30,9 +33,12 @@ app.get("/editar/:id", function(req, res){
     })
 })
 
+
+
+
 app.get("/excluir/:id", function(req, res){
     post.destroy({where: {'id': req.params.id}}).then(function(){
-        res.render("primeira_pagina")
+        res.redirect("/consulta")
     }).catch(function(erro){
         console.log("Erro ao excluir ou encontrar os dados do banco: " + erro)
     })

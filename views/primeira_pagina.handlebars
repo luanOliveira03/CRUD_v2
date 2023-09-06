@@ -45,7 +45,7 @@
                 <form action="/cadastrar" method="POST">
                     <div class="mb-3 text-start">
                         <label class="form-label">Nome:</label>
-                        <input type="name" name="nome" class="form-control" id="nome">
+                        <input type="name" name="nome" class="form-control" id="nome" required>
                     </div>
                     <div class="mb-3 text-start">
                         <label class="form-label">Telefone:</label>
@@ -53,19 +53,20 @@
                     </div>
                     <div class="mb-3 text-start">
                         <label class="form-label">Origem:</label>
-                        <select name="origem" class="form-select" aria-label="Default select example">
-                            <option value="celular" selected>Celular</option>
+                        <select name="origem" class="form-select" required aria-label="Default select example">
+                           <option value="" disabled selected></option>
+                            <option value="celular">Celular</option>
                             <option value="whatsapp">Whatsapp</option>
                             <option value="telefone_fixo">Telefone Fixo</option>
                         </select>
                     </div>
                     <div class="mb-3 text-start">
                         <label class="form-label">Data do Contato:</label>
-                        <input type="date" name="data_contato" class="form-control" id="data_contato" aria-describedby="emailHelp">
+                        <input type="date" min="2023-01-01" max="2023-12-31" name="data_contato" class="form-control" id="data_contato" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3 text-start">
                         <label class="form-label">Observação:</label>
-                        <textarea name="observacao" class="form-control" placeholder="" id="observacao" style="height: 100px"></textarea>
+                        <textarea name="observacao" class="form-control" placeholder="" id="observacao" style="height: 100px" required></textarea>
                     </div>
                     <div class="mb-3 text-start">
                         <button type="submit" style="background-color: black;" class="btn btn-primary">Cadastrar</button>

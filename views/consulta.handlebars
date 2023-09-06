@@ -105,9 +105,27 @@
                         </div>
                         <div class="col">
                             <button type="button" class="btn btn-secondary"><a href="/editar/{{id}}" style="color:inherit">Editar</a></button>
-                            <button type="button" class="btn btn-danger"><a href="/excluir/{{id}}" style="color:inherit">Excluir</a></button>
+                            <button type="button" class="btn btn-danger" data-confirm="Você deseja excluir realmente esse registro?"><a href="/excluir/{{id}}" style="color:inherit">Excluir</a></button>
                         </div>
                     </div>
+                    <script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const btnExcluir = document.querySelector(".btn.btn-danger");
+
+    if (btnExcluir) {
+      btnExcluir.addEventListener("click", function (event) {
+        const confirmMessage = btnExcluir.getAttribute("data-confirm");
+        if (window.confirm(confirmMessage)) {
+          alert("Registro excluído com sucesso!");
+        } else {
+          event.preventDefault();
+        }
+      });
+    }
+  });
+</script>
+
                     {{/dataValues}}
                 {{/each}}
             </div>
